@@ -1,8 +1,14 @@
 /**
   ******************************************************************************
-  * @file    stm32f4xx_it.h
-  * @brief   This file contains the headers of the interrupt handlers.
+  * File Name          : gpio.c
+  * Description        : This file provides code for the configuration
+  *                      of all used GPIO pins.
   ******************************************************************************
+  ** This notice applies to any and all portions of this file
+  * that are not between comment pairs USER CODE BEGIN and
+  * USER CODE END. Other portions of this file, whether 
+  * inserted by the user or by software development tools
+  * are owned by their respective copyright owners.
   *
   * COPYRIGHT(c) 2018 STMicroelectronics
   *
@@ -31,36 +37,46 @@
   ******************************************************************************
   */
 
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __STM32F4xx_IT_H
-#define __STM32F4xx_IT_H
-
-#ifdef __cplusplus
- extern "C" {
-#endif 
-
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
-#include "main.h"
-/* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
-/* Exported macro ------------------------------------------------------------*/
-/* Exported functions ------------------------------------------------------- */
+#include "gpio.h"
+/* USER CODE BEGIN 0 */
 
-void NMI_Handler(void);
-void HardFault_Handler(void);
-void MemManage_Handler(void);
-void BusFault_Handler(void);
-void UsageFault_Handler(void);
-void SVC_Handler(void);
-void DebugMon_Handler(void);
-void PendSV_Handler(void);
-void SysTick_Handler(void);
+/* USER CODE END 0 */
 
-#ifdef __cplusplus
+/*----------------------------------------------------------------------------*/
+/* Configure GPIO                                                             */
+/*----------------------------------------------------------------------------*/
+/* USER CODE BEGIN 1 */
+
+/* USER CODE END 1 */
+
+/** Configure pins as 
+        * Analog 
+        * Input 
+        * Output
+        * EVENT_OUT
+        * EXTI
+*/
+void MX_GPIO_Init(void)
+{
+
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOH_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+
 }
-#endif
 
-#endif /* __STM32F4xx_IT_H */
+/* USER CODE BEGIN 2 */
+
+/* USER CODE END 2 */
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

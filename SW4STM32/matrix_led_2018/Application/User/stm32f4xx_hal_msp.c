@@ -1,10 +1,11 @@
 /**
   ******************************************************************************
-  * @file    stm32f4xx_it.h
-  * @brief   This file contains the headers of the interrupt handlers.
+  * File Name          : stm32f4xx_hal_msp.c
+  * Description        : This file provides code for the MSP Initialization 
+  *                      and de-Initialization codes.
   ******************************************************************************
   *
-  * COPYRIGHT(c) 2018 STMicroelectronics
+  * COPYRIGHT(c) 2016 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -30,37 +31,51 @@
   *
   ******************************************************************************
   */
-
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __STM32F4xx_IT_H
-#define __STM32F4xx_IT_H
-
-#ifdef __cplusplus
- extern "C" {
-#endif 
-
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
-#include "main.h"
-/* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
-/* Exported macro ------------------------------------------------------------*/
-/* Exported functions ------------------------------------------------------- */
 
-void NMI_Handler(void);
-void HardFault_Handler(void);
-void MemManage_Handler(void);
-void BusFault_Handler(void);
-void UsageFault_Handler(void);
-void SVC_Handler(void);
-void DebugMon_Handler(void);
-void PendSV_Handler(void);
-void SysTick_Handler(void);
+/* USER CODE BEGIN 0 */
 
-#ifdef __cplusplus
+/* USER CODE END 0 */
+
+/**
+  * Initializes the Global MSP.
+  */
+void HAL_MspInit(void)
+{
+  /* USER CODE BEGIN MspInit 0 */
+
+  /* USER CODE END MspInit 0 */
+
+  HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
+
+  /* System interrupt init*/
+  /* MemoryManagement_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(MemoryManagement_IRQn, 0, 0);
+  /* BusFault_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(BusFault_IRQn, 0, 0);
+  /* UsageFault_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(UsageFault_IRQn, 0, 0);
+  /* DebugMonitor_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DebugMonitor_IRQn, 0, 0);
+  /* SysTick_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+
+  /* USER CODE BEGIN MspInit 1 */
+
+  /* USER CODE END MspInit 1 */
 }
-#endif
 
-#endif /* __STM32F4xx_IT_H */
+/* USER CODE BEGIN 1 */
+
+/* USER CODE END 1 */
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
